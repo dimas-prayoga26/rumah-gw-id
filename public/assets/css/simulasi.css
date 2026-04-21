@@ -1,0 +1,125 @@
+/* BACKGROUND */
+.simulasi-div {
+    background-image: url("../img/LandingPage/bg-simulasi.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.simulasi > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* FORM */
+.simulasi-form {
+    background: rgba(232, 239, 254, 0.92);
+    backdrop-filter: blur(6px);
+
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.simulasi-form label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.simulasi-form input,
+.simulasi-form select {
+    border-radius: 8px;
+}
+
+.btn-simulasi {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* HERO */
+.simulasi-hero {
+    color: white;
+    min-height: 520px;
+}
+
+.hero-content {
+    max-width: 667px;
+    padding: 30px;
+}
+
+.hero-content h2 {
+    font-size: 54px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .simulasi-hero {
+        min-height: 269px;
+    }
+
+    .hero-content h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .simulasi {
+        padding: 20px;
+    }
+
+    .simulasi-form {
+        padding: 20px;
+    }
+
+    .simulasi-hero {
+        min-height: 198px;
+    }
+
+    .hero-content {
+        padding: 20px;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+}
+
+.tombol-lokasi button.active {
+    background-color: #fd0c10;
+    color: white;
+}
+
+#lantai-naik.active,
+#lantai-turun.active {
+    background-color: #fd0c10 !important;
+    color: white !important;
+}
+
+#lantai-turun:not(.active),
+#lantai-naik:not(.active) {
+    background-color: var(--bs-dark-bg-subtle) !important;
+    color: white !important;
+}
+
+.input-simulasi:focus,
+.input-simulasi:active {
+    box-shadow: none;
+    outline: none;
+    border: 1px solid transparent;
+}

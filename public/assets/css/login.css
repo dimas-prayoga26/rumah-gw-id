@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 28px !important;
+}
+
+.login-form {
+    width: 60%;
+}
+
+@media (max-width:672px) {
+    .login-form {
+        width: 95%;
+    }
+
+    .user-regis-form{
+        width: 95%;
+    }
+
+    .worker-regis-form{
+        width: 95%;
+    }
+}
+
+.input-login {
+    border-radius: 42px;
+    padding: 15px 20px;
+    margin-bottom: 14px;
+    box-shadow: inset 0px 4px 4px rgba(0,0,0,.25);
+    border: 1px solid transparent;
+}
+
+.input-login:focus{
+     border: 1px solid #FD0C10;
+     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+     caret-color: #FD0C10;
+}
+
+.input-login::placeholder{
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.input-login:focus::placeholder{
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+.password-input {
+    position: relative;
+}
+
+.password-input i {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-37%);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.password-input i:hover {
+    color: #FD0C10;
+}
+
+.form-extra {
+    margin: 6px 0 20px;
+    text-align: right;
+}
+
+.form-extra a:focus{
+    outline: none;
+}
+
+.btn-login {
+    border-radius: 42px;
+    padding: 14px;
+    background-color: #FD0C10;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn-login:hover, .btn-login:focus {
+    background-color: #111119;
+    color: white;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 60%;          /* samakan dengan lebar form */
+    margin: 19px auto;
+}
+
+.divider hr {
+    flex: 1;
+    height: 2px;
+    border: none;
+    background-color: #515162;
+}
+
+.divider span {
+    font-size: 14px;
+    color: #6c757d;
+    white-space: nowrap;
+}
+
+.regis-form {
+    width: 60%;
+}
+
+form{
+    width: 60%;
+}
+
+.auth-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(90deg, #F6F8FC 0%, #CDD3DF 100%);
+    border-radius: 999px;
+    padding: 6px;
+    width: 420px;
+    height: 56px;
+    box-shadow: inset 0px 4px 4px rgba(0,0,0,.25);
+}
+
+.auth-switch button {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 2;
+    transition: color .3s;
+}
+
+.auth-switch button.active {
+    color: white;
+}
+
+.auth-indicator {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 8px);
+    height: calc(100% - 8px);
+    background: #FD0C10;
+    border-radius: 999px;
+    transition: transform .4s cubic-bezier(.4,0,.2,1);
+}
+
+.form-hidden {
+    display: none;
+}
+
+.form-fade {
+    animation: formFade .35s ease;
+}
+
+@keyframes formFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

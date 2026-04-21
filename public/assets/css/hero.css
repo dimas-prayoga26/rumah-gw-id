@@ -1,0 +1,63 @@
+.home-banner {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Video background */
+.home-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Overlay gelap */
+.home-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+.home-banner .container {
+    z-index: 2;
+    position: relative;
+}
+
+/* Text */
+.home-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.home-subtitle {
+    max-width: 750px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Search Card */
+.home-search {
+    background: #fff;
+}
+
+.home-search-btn {
+    border-radius: 0.75rem;
+    padding: 12px 16px;
+    font-weight: 500;
+    border: 1px solid #eee;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-title {
+        font-size: 2.2rem;
+    }
+}

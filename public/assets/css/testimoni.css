@@ -1,0 +1,359 @@
+.label-testi {
+    position: absolute;
+    left: 50%;
+    top: 81%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    text-align: center;
+    z-index: 5;
+}
+
+@media (max-width: 1399px) {
+    .label-testi {
+        top: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .label-testi {
+        top: 10%;
+        width: 90%;
+    }
+
+    .label-testi p:nth-child(2) {
+        font-size: 28px;
+    }
+
+    .label-testi p:nth-child(3) {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    p.testi-huge {
+        font-size: 81px;
+        padding: 0 10px;
+    }
+}
+
+.testi-huge {
+    font-size: 88px;
+    letter-spacing: 2px;
+    color: transparent;
+    text-shadow: 1px 1px 2px #c5c3c3; /* efek shadow */
+}
+
+.label-testi p:nth-child(2) {
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.label-testi p:nth-child(3) {
+    font-weight: light;
+    font-size: 18px;
+    color: #8f8fa3;
+    width: 90%;
+}
+
+.label-title {
+    padding: 8px 43px;
+    border-radius: 20px;
+    background: transparent;
+    border: none;
+    z-index: 5;
+    width: fit-content;
+    font-weight: 300;
+    letter-spacing: 0.8px;
+    font-size: 18px;
+    margin: 0 auto;
+    box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.line-testi {
+    width: 100%;
+    height: 80px;
+    border: none;
+    background-color: transparent;
+    margin: 39px 0 auto;
+}
+
+.test {
+    background-color: red;
+    width: 100px;
+    margin: 0 auto;
+    border-bottom-left-radius: 50px;
+    height: 100px;
+}
+
+.testi-section {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    height: 67.5dvh;
+}
+
+.image-testi {
+    position: absolute;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+.image-testi img {
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid red;
+    z-index: 2;
+    margin: 0 auto;
+    position: absolute;
+    inset: 0;
+}
+
+.image-testi img:nth-child(1) {
+    width: 142px;
+    height: 267px;
+}
+
+/* Layer 2 */
+.image-testi img:nth-child(2) {
+    left: -300px;
+    top: 34px;
+    width: 122px;
+    height: 195px;
+}
+
+.image-testi img:nth-child(3) {
+    right: -300px;
+    top: 34px;
+    width: 122px;
+    height: 195px;
+}
+
+/* Layer 3 */
+.image-testi img:nth-child(4) {
+    right: -576px;
+    top: 20px;
+    width: 122px;
+    height: 116px;
+}
+
+.image-testi img:nth-child(5) {
+    right: -576px;
+    top: 150px;
+    width: 122px;
+    height: 150px;
+}
+
+.image-testi img:nth-child(6) {
+    left: -576px;
+    top: 150px;
+    width: 122px;
+    height: 150px;
+}
+
+.image-testi img:nth-child(7) {
+    left: -576px;
+    top: 20px;
+    width: 122px;
+    height: 116px;
+}
+
+/* Layer 4 */
+.image-testi img:nth-child(8) {
+    left: -848px;
+    top: 34px;
+    width: 122px;
+    height: 129px;
+}
+
+.image-testi img:nth-child(9) {
+    left: -848px;
+    top: 176px;
+    width: 122px;
+    height: 129px;
+}
+
+.image-testi img:nth-child(10) {
+    left: -848px;
+    top: 318px;
+    width: 122px;
+    height: 129px;
+}
+
+.image-testi img:nth-child(11) {
+    right: -848px;
+    top: 34px;
+    width: 122px;
+    height: 129px;
+}
+
+.image-testi img:nth-child(12) {
+    right: -848px;
+    top: 176px;
+    width: 122px;
+    height: 129px;
+}
+
+.image-testi img:nth-child(13) {
+    right: -848px;
+    top: 318px;
+    width: 122px;
+    height: 129px;
+}
+
+/* Layer 5 */
+.image-testi img:nth-child(14) {
+    left: -1118px;
+    top: 110px;
+    width: 122px;
+    height: 242px;
+}
+
+.image-testi img:nth-child(15) {
+    left: -1118px;
+    top: 370px;
+    width: 122px;
+    height: 150px;
+}
+
+.image-testi img:nth-child(16) {
+    right: -1118px;
+    top: 110px;
+    width: 122px;
+    height: 242px;
+}
+
+.image-testi img:nth-child(17) {
+    right: -1118px;
+    top: 370px;
+    width: 122px;
+    height: 150px;
+}
+
+.card-testimoni {
+    background: linear-gradient(240deg, #f3f4f7 0%, #cdd3df 100%);
+    backdrop-filter: blur(6px) saturate(60%);
+    -webkit-backdrop-filter: blur(6px) saturate(60%);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+.card-testimoni p:nth-child(4) {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.identity {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.identity span {
+    font-weight: lighter;
+    font-size: 16px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.testimoni-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.testimoni-track {
+    display: flex;
+    gap: 24px;
+    will-change: transform;
+}
+
+.card-testimoni {
+    min-width: 320px; /* KUNCI */
+    flex-shrink: 0;
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.testimoni-track hr {
+    background-color: gray;
+    height: 2px;
+    margin: 8px 2px;
+}
+
+/* ========================= */
+/* RESPONSIVE TESTIMONI IMG */
+/* ========================= */
+
+/* Laptop kecil */
+@media (max-width: 1400px) {
+    /* sembunyikan layer 5 */
+    .image-testi img:nth-child(14),
+    .image-testi img:nth-child(15),
+    .image-testi img:nth-child(16),
+    .image-testi img:nth-child(17) {
+        display: none;
+    }
+}
+
+/* Tablet besar */
+@media (max-width: 1200px) {
+    /* sembunyikan layer 4 */
+    .image-testi img:nth-child(8),
+    .image-testi img:nth-child(9),
+    .image-testi img:nth-child(10),
+    .image-testi img:nth-child(11),
+    .image-testi img:nth-child(12),
+    .image-testi img:nth-child(13) {
+        display: none;
+    }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    /* sembunyikan layer 3 */
+    .image-testi img:nth-child(4),
+    .image-testi img:nth-child(5),
+    .image-testi img:nth-child(6),
+    .image-testi img:nth-child(7) {
+        display: none;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    /* sembunyikan layer 2 */
+    .image-testi img:nth-child(2),
+    .image-testi img:nth-child(3) {
+        display: none;
+    }
+
+    /* center label */
+    .label-testi {
+        transform: translateY(240px) translateX(-50%);
+        left: 50%;
+        position: absolute;
+    }
+}
+
+/* Mobile kecil */
+@media (max-width: 576px) {
+    /* sembunyikan semua kecuali gambar tengah */
+    .image-testi img:not(:first-child) {
+        display: none;
+    }
+
+    .image-testi img:nth-child(1) {
+        width: 110px;
+        height: 200px;
+    }
+}

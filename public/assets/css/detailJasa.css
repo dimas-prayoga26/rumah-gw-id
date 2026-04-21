@@ -1,0 +1,56 @@
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
+    background: white !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.mySwiper .swiper-button-next::after,
+.mySwiper .swiper-button-prev::after {
+    color: black !important;
+    font-size: 18px !important;
+}
+
+.relatedSwiper .swiper-button-next,
+.relatedSwiper .swiper-button-prev {
+    background: white !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.relatedSwiper .swiper-button-next::after,
+.relatedSwiper .swiper-button-prev::after {
+    color: black !important;
+    font-size: 18px !important;
+}
+
+.higlight-img img{
+    height:620px;
+    width:100%;
+    cursor:pointer;
+}
+
+.higlight-img {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#detail-right{
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.harga-detail{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px 0 10px 20px;
+    background-color: #FAFAFA
+}
+
+
