@@ -6,12 +6,12 @@ use App\Models\ImagePortofolio;
 use App\Models\Mitra;
 use App\Models\MitraNotification;
 use App\Models\User;
-use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
-use Session;
 
 class MitraController extends Controller
 {
@@ -311,7 +311,7 @@ class MitraController extends Controller
 
     public function notifRead()
     {
-        MitraNotification::where('mitra_id', auth()->id())
+        MitraNotification::where('mitra_id', Auth::id())
             ->where('is_read', '0')
             ->update(['is_read' => '1']);
 

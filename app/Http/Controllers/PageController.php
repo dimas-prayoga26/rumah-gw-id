@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Mitra;
 use App\Models\MitraNotification;
 use App\Models\User;
-use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {

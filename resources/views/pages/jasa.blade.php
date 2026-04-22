@@ -1,4 +1,4 @@
-@extends('main')
+    @extends('main')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('assets/css/jasa.css') }}">
