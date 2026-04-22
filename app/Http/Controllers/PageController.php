@@ -15,7 +15,7 @@ class PageController extends Controller
 {
     public function beranda()
     {
-        $allJasa = Mitra::all();
+        $allJasa = Mitra::with(['imagePortofolios:id,mitra_id,mitra_image_portfolio'])->get();
 
         if ($allJasa->count() >= 4) {
             $jasa = $allJasa->random(4);
@@ -69,7 +69,8 @@ class PageController extends Controller
         // Base query
         $query = Mitra::with([
             'user:id,nama',
-            'promos:id,mitra_id,harga_akhir,diskon'
+            'promos:id,mitra_id,harga_akhir,diskon',
+            'imagePortofolios:id,mitra_id,mitra_image_portfolio',
         ]);
 
         if ($promo) {
@@ -91,10 +92,41 @@ class PageController extends Controller
         }
 
         // Ambil data jasa
-        $jasa = $query->get(['id', 'user_id', 'harga', 'foto_profil', 'keahlian', 'lokasi']);
+        $jasa = $query->get([
+            'id',
+            'user_id',
+            'harga',
+            'foto_profil',
+            'keahlian',
+            'lokasi',
+            'provinsi',
+            'kabupaten_kota',
+        ]);
 
-        // Ambil lokasi berdasarkan hasil filter
-        $lokasi = (clone $query)->select('lokasi')->distinct()->get();
+        // Bangun lokasi ringkas: "Kabupaten/Kota, Provinsi"
+        $jasa->transform(function ($item) {
+            $kabupatenKota = trim((string) $item->kabupaten_kota);
+            $provinsi = trim((string) $item->provinsi);
+
+            if ($kabupatenKota === '' || $provinsi === '') {
+                $parts = array_map('trim', explode(',', (string) $item->lokasi));
+                $kabupatenKota = $kabupatenKota !== '' ? $kabupatenKota : ($parts[2] ?? '');
+                $provinsi = $provinsi !== '' ? $provinsi : ($parts[3] ?? '');
+            }
+
+            $item->lokasi_short = collect([$kabupatenKota, $provinsi])
+                ->filter()
+                ->implode(', ');
+
+            return $item;
+        });
+
+        // Lokasi filter berdasarkan lokasi ringkas unik
+        $lokasi = $jasa
+            ->pluck('lokasi_short')
+            ->filter()
+            ->unique()
+            ->values();
 
         return view('pages.jasa', compact('jasa', 'lokasi', 'title', 'subtitle'));
     }
@@ -105,39 +137,25 @@ class PageController extends Controller
             return redirect()->route('login')->with('error', 'Silahkan login terlebih dahulu');
         }
 
-        $jasa = Mitra::findOrFail($id);
+        $jasa = Mitra::with(['imagePortofolios:id,mitra_id,mitra_image_portfolio'])->findOrFail($id);
 
-        $sliderImages = array_filter([
+        $sliderImages = [
             $jasa->foto_profil ? [
                 'path' => 'assets/img/Profile/',
                 'file' => $jasa->foto_profil
             ] : null,
+        ];
 
-            $jasa->portfolio ? [
-                'path' => 'assets/img/Portfolio/' . $jasa->user->nama . '/',
-                'file' => $jasa->portfolio
-            ] : null,
+        if ($jasa->imagePortofolios->isNotEmpty()) {
+            foreach ($jasa->imagePortofolios as $portfolioImage) {
+                $sliderImages[] = [
+                    'path' => 'assets/img/Portfolio/' . $jasa->user->nama . '/',
+                    'file' => $portfolioImage->mitra_image_portfolio,
+                ];
+            }
+        }
 
-            $jasa->portfolio2 ? [
-                'path' => 'assets/img/Portfolio/' . $jasa->user->nama . '/',
-                'file' => $jasa->portfolio2
-            ] : null,
-
-            $jasa->portfolio3 ? [
-                'path' => 'assets/img/Portfolio/' . $jasa->user->nama . '/',
-                'file' => $jasa->portfolio3
-            ] : null,
-
-            $jasa->portfolio4 ? [
-                'path' => 'assets/img/Portfolio/' . $jasa->user->nama . '/',
-                'file' => $jasa->portfolio4
-            ] : null,
-
-            $jasa->portfolio5 ? [
-                'path' => 'assets/img/Portfolio/' . $jasa->user->nama . '/',
-                'file' => $jasa->portfolio5
-            ] : null,
-        ]);
+        $sliderImages = array_values(array_filter($sliderImages));
 
         $relatedJasa = Mitra::where('id', '!=', $id)
             ->where('lokasi', 'LIKE', '%' . $jasa->lokasi . '%')
@@ -179,7 +197,10 @@ class PageController extends Controller
             return redirect()->route('login')
                 ->with('error', 'Silahkan login terlebih dahulu');
         }
-        $mitra = Mitra::with('user:id,nama')->where('user_id', Auth::id())->firstOrFail();
+        $mitra = Mitra::with([
+            'user:id,nama',
+            'imagePortofolios:id,mitra_id,mitra_image_portfolio',
+        ])->where('user_id', Auth::id())->firstOrFail();
 
         // dd($mitra);
 
@@ -274,7 +295,10 @@ class PageController extends Controller
     }
 
     public function adminMitra(){
-        $mitras = Mitra::with('user:id,nama,email,is_mitra')
+        $mitras = Mitra::with([
+                'user:id,nama,email,is_mitra',
+                'imagePortofolios:id,mitra_id,mitra_image_portfolio',
+            ])
             ->whereHas('user', function($query) {
                 $query->where('is_mitra', 1);
             })

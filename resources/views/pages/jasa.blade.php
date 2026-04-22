@@ -38,7 +38,7 @@
                     <select name="lokasi-mitra" id="lokasi-mitra" class="form-select">
                         <option value="0" selected>Semua Lokasi</option>
                         @foreach ($lokasi as $item)
-                            <option value="{{ $item->lokasi }}">{{ $item->lokasi }}</option>
+                            <option value="{{ $item }}">{{ $item }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -56,17 +56,21 @@
             <div
                 class="col-lg-3 col-md-6 col-sm-12 mb-4 jasa-card"
                 data-price="{{ $hargaPromo ?? $data->harga }}"
-                data-lokasi="{{ $data->lokasi }}"
+                data-lokasi="{{ $data->lokasi_short }}"
             >
                 <div class="card h-100 shadow-sm position-relative d-flex flex-column">
                     <img
                         src="{{ asset('assets/img/Profile/' . $data->foto_profil) }}"
-                        class="card-img-top"
-                        style="height:250px; object-fit:cover; object-position: top;"
+                        class="card-img-top jasa-card-image"
                     >
 
-                    <span class="bg-danger fw-normal text-white px-2 py-1 position-absolute" style="top: 10px; right: 10px">
-                        <i class="fa-solid fa-location-dot fa-xs"></i>&nbsp;&nbsp;{{ $data->lokasi }}
+                    @php
+                        $lokasiTampil = $data->lokasi_short ?: 'Lokasi belum diisi';
+                        $lokasiTampil = \Illuminate\Support\Str::replaceStart('Kabupaten ', 'Kab. ', $lokasiTampil);
+                    @endphp
+                    <span class="jasa-location-badge">
+                        <i class="fa-solid fa-location-dot jasa-location-icon"></i>
+                        <span class="jasa-location-text">{{ $lokasiTampil }}</span>
                     </span>
 
                     <div class="card-body d-flex flex-column">
@@ -120,4 +124,3 @@
 
 <script src="{{ asset('assets/js/jasa.js') }}"></script>
 @endsection
-

@@ -11,20 +11,20 @@
         <p class="text-uppercase text-black-50 small fw-bold mt-3 mb-1">Menu Utama</p>
 
         @if (Auth::user()->is_mitra == 1)
-            <a class="nav-link" href="{{ route('mitra-home') }}"><i class="fa-solid fa-pencil me-2"></i> Data Diri</a>
-            <a class="nav-link" href="{{ route('mitra-portfolio') }}"><i class="fa-solid fa-briefcase me-2"></i> Portofolio</a>
-            <a class="nav-link" href="{{ route('promo.index') }}"><i class="fa-solid fa-tag me-2"></i></i> Promo</a>
+            <a class="nav-link {{ request()->routeIs('mitra-home') ? 'active' : '' }}" href="{{ route('mitra-home') }}"><i class="fa-solid fa-pencil me-2"></i> Data Diri</a>
+            <a class="nav-link {{ request()->routeIs('mitra-portfolio') ? 'active' : '' }}" href="{{ route('mitra-portfolio') }}"><i class="fa-solid fa-briefcase me-2"></i> Portofolio</a>
+            <a class="nav-link {{ request()->routeIs('promo.*') ? 'active' : '' }}" href="{{ route('promo.index') }}"><i class="fa-solid fa-tag me-2"></i> Promo</a>
         @elseif(Auth::user()->is_mitra == 2)
-            <a class="nav-link" href="{{ route('admin-user') }}"><i class="fa-solid fa-pencil me-2"></i> Data User</a>
-            <a class="nav-link" href="{{ route('admin-mitra') }}"><i class="fa-solid fa-briefcase me-2"></i> Data Mitra</a>
+            <a class="nav-link {{ request()->routeIs('admin-user') ? 'active' : '' }}" href="{{ route('admin-user') }}"><i class="fa-solid fa-pencil me-2"></i> Data User</a>
+            <a class="nav-link {{ request()->routeIs('admin-mitra') ? 'active' : '' }}" href="{{ route('admin-mitra') }}"><i class="fa-solid fa-briefcase me-2"></i> Data Mitra</a>
 
             <p class="text-uppercase text-black-50 small fw-bold mt-3 mb-1">Data Simulasi</p>
-            <a class="nav-link" href="{{ route('admin-material') }}"><i class="fa-solid fa-house-circle-check me-2"></i> Data Material</a>
+            <a class="nav-link {{ request()->routeIs('admin-material') ? 'active' : '' }}" href="{{ route('admin-material') }}"><i class="fa-solid fa-house-circle-check me-2"></i> Data Material</a>
         @endif
 
         <p class="text-uppercase text-black-50 small fw-bold mt-3 mb-1">Pengaturan</p>
 
-        <a class="nav-link" href="{{ route('mitra-settings') }}"><i class="fa-solid fa-gear me-2"></i> Ubah Password</a>
+        <a class="nav-link {{ request()->routeIs('mitra-settings') ? 'active' : '' }}" href="{{ route('mitra-settings') }}"><i class="fa-solid fa-gear me-2"></i> Ubah Password</a>
     </nav>
 
     <!-- Logout -->
@@ -73,4 +73,3 @@
         overlay.classList.remove('show');
     });
 </script>
-

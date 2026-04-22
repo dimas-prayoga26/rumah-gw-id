@@ -52,20 +52,15 @@
                         <div class="swiper-wrapper">
 
                             @php $hasPortfolio = false; @endphp
+                            @foreach(($item->imagePortofolios ?? collect()) as $portfolioIndex => $portfolioImage)
+                                @php $hasPortfolio = true; @endphp
 
-                            @for ($i = 1; $i <= 5; $i++)
-                                @php $field = $i == 1 ? 'portfolio' : 'portfolio'.$i; @endphp
-
-                                @if(!empty($item->$field))
-                                    @php $hasPortfolio = true; @endphp
-
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('assets/img/Portfolio/'.$item->user->nama.'/'.$item->$field) }}"
-                                            class="card-img-top jasa-img"
-                                            alt="Portfolio {{ $i }}">
-                                    </div>
-                                @endif
-                            @endfor
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('assets/img/Portfolio/'.$item->user->nama.'/'.$portfolioImage->mitra_image_portfolio) }}"
+                                        class="card-img-top jasa-img"
+                                        alt="Portfolio {{ $portfolioIndex + 1 }}">
+                                </div>
+                            @endforeach
 
                             @if(!$hasPortfolio)
                                 <div class="swiper-slide">

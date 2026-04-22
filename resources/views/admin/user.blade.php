@@ -26,7 +26,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Email</th>
-                    <th>Role</th>
+                    {{-- <th>Role</th> --}}
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -36,7 +36,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->nama }}</td>
                         <td>{{ $user->email }}</td>
-                        <td class="text-center">
+                        {{-- <td class="text-center">
                             @if($user->is_mitra == 0)
                                 <span class="badge badge-role badge-user">User</span>
                             @elseif($user->is_mitra == 1)
@@ -44,7 +44,7 @@
                             @else
                                 <span class="badge badge-role badge-admin">Admin</span>
                             @endif
-                        </td>
+                        </td> --}}
                         <td class="text-center">
                             <button class="btn btn-sm text-white btn-warning btn-edit"
                                 data-id="{{ $user->id }}"

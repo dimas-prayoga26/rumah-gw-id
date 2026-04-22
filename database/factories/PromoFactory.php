@@ -17,11 +17,13 @@ class PromoFactory extends Factory
      */
     public function definition(): array
     {
+        $hargaAkhirList = range(1000000, 15000000, 500000);
+
         return [
             'mitra_id' => Mitra::factory(),
             'judul' => $this->faker->sentence(),
             'diskon' => $this->faker->numberBetween(10, 50),
-            'harga_akhir' => $this->faker->numberBetween(10000, 50000),
+            'harga_akhir' => $this->faker->randomElement($hargaAkhirList),
             'tanggal_mulai' => $this->faker->dateTimeBetween('now', 'now')->format('Y-m-d'),
             'tanggal_selesai' => $this->faker->dateTimeBetween('+1 week', '+2 week')->format('Y-m-d'),
         ];

@@ -6,13 +6,7 @@
 @section('mainContent')
 <div class="container-fluid">
     @php
-        $portfolios = collect([
-            $mitra->portfolio,
-            $mitra->portfolio2,
-            $mitra->portfolio3,
-            $mitra->portfolio4,
-            $mitra->portfolio5,
-        ])->filter();
+        $portfolios = $mitra->imagePortofolios ?? collect();
 
         $nama = $mitra->user->nama;
         $portfolioCount = $portfolios->count();
@@ -20,25 +14,25 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h5 class="mb-0">Daftar Portofolio</h5>
-        <button id="btnTambahPortfolio" class="btn btn-primary {{ $portfolioCount >= 5 ? 'disabled' : '' }}">
+        <button id="btnTambahPortfolio" class="btn btn-primary {{ $portfolioCount >= 20 ? 'disabled' : '' }}">
             <i class="fa-solid fa-plus"></i> Tambah Portofolio
         </button>
     </div>
 
-    @if($portfolioCount >= 5)
+    @if($portfolioCount >= 20)
         <div class="alert alert-warning text-center">
             <i class="fa-solid fa-triangle-exclamation me-2"></i>
-            Maksimal 5 portofolio diperbolehkan.
+            Maksimal 20 portofolio diperbolehkan.
         </div>
     @endif
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-4" id="portfolioGrid">
-        @forelse($portfolios as $index => $gambar)
+        @forelse($portfolios as $index => $portfolio)
             <div class="col" data-index="{{ $index }}">
                 <div class="card h-100 shadow-sm portfolio-card border-0 rounded-4 overflow-hidden"
                      style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
                     <div class="position-relative overflow-hidden" style="height: 200px;">
-                        <img src="{{ asset('assets/img/Portfolio/'.$nama.'/'.$gambar) }}"
+                        <img src="{{ asset('assets/img/Portfolio/'.$nama.'/'.$portfolio->mitra_image_portfolio) }}"
                              alt="Portofolio {{ $index + 1 }}"
                              class="w-100 h-100 object-fit-cover img-preview"
                              style="transition: transform 0.4s ease;"
@@ -52,13 +46,15 @@
 
                     <div class="card-footer bg-transparent border-0 d-flex gap-2 px-3 pb-3 pt-0">
                         <button class="btn btn-sm btn-outline-warning flex-fill btnEditPortfolio"
+                                data-id="{{ $portfolio->id }}"
                                 data-index="{{ $index }}"
-                                data-file="{{ $gambar }}"
+                                data-file="{{ $portfolio->mitra_image_portfolio }}"
                                 data-nama="{{ $nama }}">
                             <i class="bi bi-pencil-fill me-1"></i> Edit
                         </button>
 
                         <button class="btn btn-sm btn-outline-danger flex-fill btnDeletePortfolio"
+                                data-id="{{ $portfolio->id }}"
                                 data-index="{{ $index }}">
                             <i class="bi bi-trash-fill me-1"></i> Hapus
                         </button>

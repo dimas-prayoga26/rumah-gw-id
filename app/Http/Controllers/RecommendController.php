@@ -10,6 +10,7 @@ class RecommendController
 {
     public function getRecommend(SimulasiRequest $request)
     {
+        // dd($request);
         $input = $request->all();
 
         $result = $this->get_recommend($input);

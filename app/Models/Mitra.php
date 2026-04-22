@@ -19,13 +19,12 @@ class Mitra extends Model
         'whatsapp',
         'harga',
         'lokasi',
+        'provinsi',
+        'kabupaten_kota',
+        'kecamatan',
+        'desa',
         'keahlian',
         'alamat_mitra',
-        'portfolio',
-        'portfolio2',
-        'portfolio3',
-        'portfolio4',
-        'portfolio5'
     ];
 
     public function user()
@@ -41,5 +40,10 @@ class Mitra extends Model
     public function promos()
     {
         return $this->hasMany(Promo::class, 'mitra_id', 'id');
+    }
+
+    public function imagePortofolios()
+    {
+        return $this->hasMany(ImagePortofolio::class, 'mitra_id', 'id');
     }
 }

@@ -32,6 +32,7 @@ Route::prefix('/')->group(function (){
     Route::post('/notif-create', [MitraController::class, 'notifCreate'])->name('notifikasi-create');
 
     Route::get('/berita-gue', [kompasTVController::class, 'index'])->name('berita-gue');
+    Route::get('/api/wilayah/{level}/{code?}', [AdminController::class, 'getWilayah'])->name('api-wilayah');
 });
 Route::get('/pengaturan', [PageController::class, 'mitraSettings'])->name('mitra-settings');
 
@@ -68,6 +69,6 @@ Route::prefix('login')->group(function (){
     Route::post('/request-otp', [AuthController::class, 'requestOTP'])->name('request-otp');
     Route::post('/verify-otp', [AuthController::class, 'verifyRegister'])->name('verify-otp');
     Route::get('/auth/google', [SocialController::class, 'redirect'])->name('redirect');
-    Route::get('/auth/google/callback', [SocialController::class, 'callback'])->name('callback');
     });
+Route::get('/api/login/handle/google', [SocialController::class, 'callback'])->name('callback');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
